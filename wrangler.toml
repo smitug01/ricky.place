@@ -1,0 +1,7 @@
+name = "m4nic-docs"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2023-08-14"
+
+[site]
+bucket = ".output/public"
