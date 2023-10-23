@@ -2,7 +2,7 @@ export default defineAppConfig({
   docus: {
     title: "Ricky's Home",
     description: '只要努力，平凡的人也能走出不平凡的路、跳脫平凡。',
-    image: 'https://nrix.org/img/static-image.png',
+    image: 'https://ricky.place/img/preview-image.png',
     socials: {
       github: 'smitug01',
       linkedin: 'smitug01',
