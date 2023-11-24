@@ -1,2 +1,0 @@
-name: 資安金盾獎
-intro: 資安技能競賽金盾獎, WordCamp, 晚餐。
