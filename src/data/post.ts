@@ -4,7 +4,8 @@ import { siteConfig } from "@/site-config";
 /** filter out draft posts based on the environment */
 export async function getAllPosts() {
 	return await getCollection("post", ({ data }) => {
-		return import.meta.env.PROD ? !data.draft : true;
+		// return import.meta.env.PROD ? !data.draft : true;
+		return true;
 	});
 }
 
