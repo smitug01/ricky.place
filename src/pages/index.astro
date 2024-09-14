@@ -8,9 +8,9 @@ const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
-const cactusWorking: { company: string; title: string; date: string }[] = [
+const sectionWorking: { company: string; title: string; date: string }[] = [
 	{
-		company: "OneDegree Hong Kong Limited",
+		company: "OneDegree Hong Kong Limited (Taiwan Branch)",
 		title: "Intern Network Engineer",
 		date: "2024 - Now"
 	},
@@ -26,7 +26,7 @@ const cactusWorking: { company: string; title: string; date: string }[] = [
 	}
 ];
 
-const cactusContest: { [year: string]: { title: string; desc: string; href?: string }[] } = {
+const sectionContest: { [year: string]: { title: string; desc: string; href?: string }[] } = {
 	"2024": [
 		{		
 			title: "實踐大學企管系小論文競賽, 2nd Place",
@@ -35,6 +35,10 @@ const cactusContest: { [year: string]: { title: string; desc: string; href?: str
 		{		
 			title: "台北市性別平等小論文競賽, Excellent Work",
 			desc: "(解析網路社交平台: 性別暴力蔓延之地? 以「霸社」為鑑, Write with Team)"
+		},
+		{		
+			title: "CyberSec CyberRange Fianl, 7rd Place",
+			desc: "(Hosted by iThome / TRAPA, Solo)"
 		},
 		{		
 			title: "全國技能分區賽, 5rd Place",
@@ -54,7 +58,7 @@ const cactusContest: { [year: string]: { title: string; desc: string; href?: str
 	]
 };
 
-const catchPresentation: { desc: string; title: string }[] = [
+const sectionPresentation: { desc: string; title: string }[] = [
 	{
 		title: "資訊實作與演練 - 斗六高中 (一日資訊體驗營, 教育部資安人才培育計畫)",
 		desc: "Mar, 2024"
@@ -64,6 +68,21 @@ const catchPresentation: { desc: string; title: string }[] = [
 		desc: "Jun, 2024"
 	}
 ]
+
+const sectionCommunityConference: { title: string; year: string }[] = [
+	{
+		title: "COSCUP 2023",
+		year: "2023"
+	},
+	{
+		title: "ARIN 53 (Hosted by American Registry for Internet Numbers)",
+		year: "2023"
+	},
+	{
+		title: "SCINT 北台灣學生資訊社群",
+		year: "2022-2023"
+	}
+];
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -90,7 +109,7 @@ const catchPresentation: { desc: string; title: string }[] = [
 		<h2 class="title mb-4 text-xl">Working Experiences</h2>
 		<dl class="space-y-4">
 			{
-				cactusWorking.map(({ company, title, date }) => (
+				sectionWorking.map(({ company, title, date }) => (
 					<div class="flex flex-col gap-2 sm:flex-row justify-between">
 						<dt>
 							<span class="font-semibold">{company}</span>
@@ -107,7 +126,7 @@ const catchPresentation: { desc: string; title: string }[] = [
 	<section class="mt-16">
 		<h2 class="title mb-4 text-xl">Contest</h2>
 		<dl class="space-y-4">
-			{Object.entries(cactusContest).flatMap(([year, contests]) => 
+			{Object.entries(sectionContest).flatMap(([year, contests]) => 
 				contests.map(({ title, desc, href }) => (
 					<div class="flex flex-col gap-2 sm:flex-row justify-between">
 						<dt class="flex-grow">
@@ -133,7 +152,7 @@ const catchPresentation: { desc: string; title: string }[] = [
 		<h2 class="title mb-4 text-xl">Presentation</h2>
 		<dl class="space-y-4">
 			{
-				catchPresentation.map(({ desc, title }) => (
+				sectionPresentation.map(({ desc, title }) => (
 					<div class="flex flex-col gap-2 sm:flex-row justify-between">
 						<dt>
 							<span class="flex">
@@ -141,6 +160,24 @@ const catchPresentation: { desc: string; title: string }[] = [
 							</span>
 						</dt>
 						<dd class="text-right">{desc}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Community & Conference</h2>
+		<dl class="space-y-4">
+			{
+				sectionCommunityConference.map(({ title, year }) => (
+					<div class="flex flex-col gap-2 sm:flex-row justify-between">
+						<dt>
+							<span class="flex">
+								{title}
+							</span>
+						</dt>
+						<dd class="text-right">{year}</dd>
 					</div>
 				))
 			}
