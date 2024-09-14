@@ -8,7 +8,7 @@ const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
-const cactusWorking: { desc: string; title: string; date: string }[] = [
+const cactusWorking: { company: string; title: string; date: string }[] = [
 	{
 		company: "OneDegree Hong Kong Limited",
 		title: "Intern Network Engineer",
@@ -148,7 +148,6 @@ const catchPresentation: { desc: string; title: string }[] = [
 			{
 				allPostsByDate.map((p) => (
 					<li class="grid gap-2 sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
-						{/* @ts-expect-error - issue with -> @astrojs/check@0.9.3 */}
 						<PostPreview post={p} />
 					</li>
 				))
