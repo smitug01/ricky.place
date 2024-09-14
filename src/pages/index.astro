@@ -1,0 +1,158 @@
+---
+import SocialList from "@/components/SocialList.astro";
+import PostPreview from "@/components/blog/PostPreview.astro";
+import { getAllPosts, sortMDByDate } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+
+const MAX_POSTS = 10;
+const allPosts = await getAllPosts();
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+
+const cactusWorking: { desc: string; title: string; date: string }[] = [
+	{
+		company: "OneDegree Hong Kong Limited",
+		title: "Intern Network Engineer",
+		date: "2024 - Now"
+	},
+	{
+		company: "Simple Information, Inc.",
+		title: "Founder & Infrastructure Architect",
+		date: "2022 - Now"
+	}
+];
+
+const cactusContest: { [year: string]: { title: string; desc: string; href?: string }[] } = {
+	"2024": [
+		{		
+			title: "實踐大學企管系小論文競賽, 2nd Place",
+			desc: "(試申論 Chat GPT 對高中職生的學涯及職涯抉擇之影響, Write with Team)"
+		},
+		{		
+			title: "台北市性別平等小論文競賽, Excellent Work",
+			desc: "(解析網路社交平台: 性別暴力蔓延之地? 以「霸社」為鑑, Write with Team)"
+		},
+		{		
+			title: "全國技能分區賽, 5rd Place",
+			desc: "(網路與資訊技術, Solo)"
+		},
+		{
+			title: "神盾盃 Preliminary, 13rd Place",
+			desc: "(從缺, Play with Team)"
+		}
+	],
+	"2023": [
+		{
+			title: "資安技能金盾獎 Final, 1st Place",
+			desc: "(海豹海豹我的神, Play with Team)",
+			href: "https://tw.news.yahoo.com/%E8%B3%87%E5%AE%89%E6%8A%80%E8%83%BD%E9%87%91%E7%9B%BE%E7%8D%8E-40%E7%B5%84%E9%9D%92%E5%B9%B4%E5%A5%BD%E6%89%8B%E8%BC%83%E5%8B%81-160000375.html",
+		},
+	]
+};
+
+const catchPresentation: { desc: string; title: string }[] = [
+	{
+		title: "資訊實作與演練 - 斗六高中 (一日資訊體驗營, 教育部資安人才培育計畫)",
+		desc: "Mar, 2024"
+	},
+	{
+		title: "資訊安全基礎認識 - 羅東高工 (一日資訊體驗營, 教育部資安人才培育計畫)",
+		desc: "Jun, 2024"
+	}
+]
+---
+
+<PageLayout meta={{ title: "Home" }}>
+	<section>
+		<h1 class="title mb-6">Whoami</h1>
+		<p class="mb-4">
+			Hi, I'm Ricky from Taipei, focusing on infrastructure and networking. 
+			Currently, I work as an Intern Network Engineer at OneDegree while learning 
+			Web, Misc, and Blue Team skills in the CTF and Information Security field.
+		</p>
+		<div class="mb-4">
+			<strong class="block mb-2">Education:</strong>
+			<p>National Taiwan University of Science and Technology</p>
+			<div class="flex justify-between">
+				<span>Dept. Electronic and Computer Engineering</span>
+				<span>2024 - Est. 2028</span>
+			</div>
+			<p>Bachelor's degree</p>
+		</div>
+		<SocialList />
+	</section>
+	
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Working Experiences</h2>
+		<dl class="space-y-4">
+			{
+				cactusWorking.map(({ company, title, date }) => (
+					<div class="flex flex-col gap-2 sm:flex-row justify-between">
+						<dt>
+							<span class="font-semibold">{company}</span>
+							<br />
+							<span>{title}</span>
+						</dt>
+						<dd class="text-right">{date}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Contest</h2>
+		<dl class="space-y-4">
+			{Object.entries(cactusContest).flatMap(([year, contests]) => 
+				contests.map(({ title, desc, href }) => (
+					<div class="flex flex-col gap-2 sm:flex-row justify-between">
+						<dt class="flex-grow">
+							<span class="flex">
+								{href ? (
+									<a class="cactus-link" href={href} rel="noreferrer" target="_blank">
+										{title}
+									</a>
+								) : (
+									title
+								)}
+							</span>
+							<span class="text-sm text-gray-500">{desc}</span>
+						</dt>
+						<dd class="text-right whitespace-nowrap">{year}</dd>
+					</div>
+				))
+			)}
+		</dl>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Presentation</h2>
+		<dl class="space-y-4">
+			{
+				catchPresentation.map(({ desc, title }) => (
+					<div class="flex flex-col gap-2 sm:flex-row justify-between">
+						<dt>
+							<span class="flex">
+								{title}
+							</span>
+						</dt>
+						<dd class="text-right">{desc}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section>
+
+	<section aria-label="Blog post list" class="mt-16">
+		<h2 class="title mb-4 text-xl">Posts</h2>
+		<ul class="space-y-4">
+			{
+				allPostsByDate.map((p) => (
+					<li class="grid gap-2 sm:grid-cols-[auto_1fr] sm:[&_q]:col-start-2">
+						{/* @ts-expect-error - issue with -> @astrojs/check@0.9.3 */}
+						<PostPreview post={p} />
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</PageLayout>
