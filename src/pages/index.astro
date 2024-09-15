@@ -8,6 +8,21 @@ const MAX_POSTS = 10;
 const allPosts = await getAllPosts();
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
+const sectionEducation: { school: string; department: string; degree: string; period: string }[] = [
+	{
+		school: "Taipei Municipal Da'an Vocational High School",
+		department: "Dept. of Computer Science",
+		degree: "Hihg School",
+		period: "2021 - 2024"
+	},
+	{
+		school: "National Taiwan University of Science and Technology",
+		department: "Dept. Electronic and Computer Engineering",
+		degree: "Bachelor's degree",
+		period: "2024 - Est 2028"
+	}
+];
+
 const sectionWorking: { company: string; title: string; date: string }[] = [
 	{
 		company: "OneDegree Hong Kong Limited (Taiwan Branch)",
@@ -23,6 +38,15 @@ const sectionWorking: { company: string; title: string; date: string }[] = [
 		company: "404 Network Information Co.",
 		title: "Co-Founder & Network Engineer",
 		date: "2021 - Now"
+	}
+];
+
+const sectionCertifications: { title: string; issuer: string; date: string; id?: string }[] = [
+	{
+		title: "Information Security Engineer - Associate Level",
+		issuer: "Ministry of Economic Affairs (Taiwan)",
+		date: "July 2024",
+		id: "B-S11-2409-2024"
 	}
 ];
 
@@ -93,14 +117,18 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 			Currently, I work as an Intern Network Engineer at OneDegree while learning 
 			Web, Misc, and Blue Team skills in the CTF and Information Security field.
 		</p>
-		<div class="mb-4">
-			<strong class="block mb-2">Education:</strong>
-			<p>National Taiwan University of Science and Technology</p>
-			<div class="flex justify-between">
-				<span>Dept. Electronic and Computer Engineering</span>
-				<span>2024 - Est. 2028</span>
-			</div>
-			<p>Bachelor's degree</p>
+		<div class="mb-6">
+			<strong class="block mb-4">Education:</strong>
+			{sectionEducation.map(({ school, department, degree, period }) => (
+				<div class="mb-4">
+					<span class="font-semibold">{school}</span>
+					<div class="flex justify-between">
+						<span>{department}</span>
+						<span>{period}</span>
+					</div>
+					<p>{degree}</p>
+				</div>
+			))}
 		</div>
 		<SocialList />
 	</section>
@@ -117,6 +145,25 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 							<span>{title}</span>
 						</dt>
 						<dd class="text-right">{date}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="title mb-4 text-xl">Certifications</h2>
+		<dl class="space-y-4">
+			{
+				sectionCertifications.map(({ title, issuer, date, id }) => (
+					<div class="flex flex-col sm:flex-row items-center gap-2">
+						<dt class="flex-grow">
+							<span class="font-semibold">{title}</span>
+							<br />
+							<span>{issuer}</span>
+							{id && <span class="block text-sm">Certificate ID: {id}</span>}
+						</dt>
+						<dd class="text-center">{date}</dd>
 					</div>
 				))
 			}
