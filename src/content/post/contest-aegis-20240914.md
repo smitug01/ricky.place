@@ -3,7 +3,7 @@ title: "Aegis CTF 2024 Writeup"
 description: "This post contains the writeup for the Aegis CTF 2024 competition."
 publishDate: "14 Sep 2024"
 tags: ["aegis", "ctf", "writeup"]
-draft: true
+draft: false
 ---
 
 ### WEB - 1. JSFBOX
@@ -173,8 +173,6 @@ if __name__ == "__main__":
     start_game()
     exit()
 ```
-
-
 
 ```
 const fs = require('fs');

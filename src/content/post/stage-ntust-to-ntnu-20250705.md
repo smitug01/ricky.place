@@ -3,7 +3,7 @@ title: "From NTUST to NTNU"
 description: "A personal story about leaving my comfort zone to pursue my true passion for Computer Science, choosing authenticity over convenience."
 publishDate: "05 Jul 2025"
 tags: ["journey", "university", "education"]
-draft: true
+draft: false
 ---
 
 **A Journey of Courage: From NTUST to NTNU**
