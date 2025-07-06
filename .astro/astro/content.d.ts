@@ -151,9 +151,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"post": {
-"aegis2024.md": {
-	id: "aegis2024.md";
-  slug: "aegis2024";
+"contest-aegis-20240914.md": {
+	id: "contest-aegis-20240914.md";
+  slug: "contest-aegis-20240914";
+  body: string;
+  collection: "post";
+  data: InferEntrySchema<"post">
+} & { render(): Render[".md"] };
+"stage-ntust-to-ntnu-20250705.md": {
+	id: "stage-ntust-to-ntnu-20250705.md";
+  slug: "stage-ntust-to-ntnu-20250705";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">

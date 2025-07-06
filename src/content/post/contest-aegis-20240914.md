@@ -6,10 +6,13 @@ tags: ["aegis", "ctf", "writeup"]
 draft: true
 ---
 
-### WEB - 1. JSFBOX 
+### WEB - 1. JSFBOX
+
 題目中提供一個網頁，只能輸入符號 (Symbol)，有提供原始碼，
 要讓網頁爆出 Flag。
+
 #### 題目
+
 ```
 const express = require('express');
 const app = express();
@@ -30,7 +33,7 @@ app.post("/escape", (req, res) => {
     }
 
     console.log(body);
-    
+
     let result;
     try {
         result = eval(body).toString();
@@ -43,7 +46,7 @@ app.post("/escape", (req, res) => {
             return res.send("WOW! How did you know the flag?");
         }
     } catch (e) {}
-    
+
     return res.send("Good job! Try harder.");
 });
 
@@ -80,6 +83,7 @@ function validateString(input) {
 ```
 
 #### 解法
+
 使用 eval 函數對比，可以直接帶入 res.send(fa)，就能成功把 Flag 搞出來。
 
 題目既然只能用 symbols 作為輸入，那第一步就聯想到 JSFuck，
@@ -99,7 +103,6 @@ function validateString(input) {
 ")" // )
 ```
 
-
 ### MISC - 1. Eazy Jail
 
 題目有分兩個 Stage, 分別是 Python 跟 JS，
@@ -110,6 +113,7 @@ function validateString(input) {
 要同時滿足 Number(input) 跟 safeEval(input) 分別為 1024 與 532。
 
 #### 題目
+
 ```
 import os
 
@@ -145,7 +149,7 @@ def start_game():
 ██╔══██╗██╔════╝██╔════╝░██║██╔════╝
 ███████║█████╗░░██║░░██╗░██║╚█████╗░
 ██╔══██║██╔══╝░░██║░░╚██╗██║░╚═══██╗
-██║░░██║███████╗╚██████╔╝██║██████╔╝ 
+██║░░██║███████╗╚██████╔╝██║██████╔╝
 ╚═╝░░╚═╝╚══════╝░╚═════╝░╚═╝╚═════╝░ STAGE 1"""
     print(logo)
     print("Your task is to enter a string that, when used in a command like 'int(YOUR_INPUT)', results in the number 2.")
@@ -163,13 +167,15 @@ def start_game():
                 break
             else:
                 print("An error occurred.")
-                return 
+                return
 
 if __name__ == "__main__":
     start_game()
     exit()
 ```
-　
+
+
+
 ```
 const fs = require('fs');
 const fa = fs.readFileSync('./flag', 'utf-8');
@@ -260,6 +266,7 @@ function displayError() {
 ```
 
 #### 解法
+
 第一個 Stage: [ 2, "2", b"2", f"{2}", """2""", f"""2""", f"""{2}""", f"{f"{2}"}" ]
 
 第二個 Stage: 運用新版 JS Number(input) 不會辨識進位的特性，使用 01024 讓他取得 1024, 後面 safeEval(input) 時會辨識進為八進位，1024 即為 532，可滿足兩個條件。
