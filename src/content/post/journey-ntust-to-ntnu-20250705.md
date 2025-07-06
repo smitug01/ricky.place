@@ -38,19 +38,19 @@ In early January 2025, the results came in. I got accepted into NTNU's Computer 
 
 But getting accepted was just the beginning. Standing at this crossroads, I felt pretty overwhelmed. Should I leave Taiwan Tech where I'd made friends, gotten comfortable, and found my place? Starting over - academically, socially, personally - was both exciting and terrifying.
 
-## The Reality Check
+### The Reality Check
 
 The numbers were kind of intimidating: about 25% of my graduating class from Da'an Vocational High School ended up at Taiwan Tech, so I had this built-in network of familiar faces. At NTNU, I'd basically know nobody. That meant starting from scratch with making friends, learning new systems, and adapting to a completely different vibe.
 
 And then there's the academic side - I'd essentially be starting university over, which means graduating at least a year later than my current classmates. That's a pretty big deal when you think about career timing and life plans.
 
-## The Push I Needed
+### The Push I Needed
 
 During all this back-and-forth, my colleague Lumi really helped me see things clearly. She basically told me that staying somewhere just because it's comfortable or expected is actually the riskier move in the long run. Her support gave me the push I needed to prioritize what would actually make me happy over what was just convenient.
 
 With her encouragement, I started seeing this transition differently. Instead of abandoning what I'd built, I was finally going after what I actually wanted. The decision became clear: I'd step out of my comfort zone and follow my passion for Computer Science, trusting that the temporary discomfort would be worth it.
 
-## Taking the Leap
+### Taking the Leap
 
 Today, as I officially start at National Taiwan Normal University, I'm feeling a mix of excitement, nervousness, and hope. This isn't just about changing schools or majors - it's about committing to figuring out who I really am and having the guts to pursue what actually inspires me, even when the path ahead is unclear.
 

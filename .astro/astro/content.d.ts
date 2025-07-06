@@ -158,9 +158,9 @@ declare module 'astro:content' {
   collection: "post";
   data: InferEntrySchema<"post">
 } & { render(): Render[".md"] };
-"stage-ntust-to-ntnu-20250705.md": {
-	id: "stage-ntust-to-ntnu-20250705.md";
-  slug: "stage-ntust-to-ntnu-20250705";
+"journey-ntust-to-ntnu-20250705.md": {
+	id: "journey-ntust-to-ntnu-20250705.md";
+  slug: "journey-ntust-to-ntnu-20250705";
   body: string;
   collection: "post";
   data: InferEntrySchema<"post">
