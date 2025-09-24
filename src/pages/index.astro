@@ -155,7 +155,7 @@ const sectionPresentation: { desc: string; title: string }[] = [
 	},
 	{
 		title: "版本管理與部署：從 Git 到 Google Cloud 的完整流程 - SITCON Camp 2025",
-		desc: "Jul2025"
+		desc: "Jul 2025"
 	}
 ]
 
@@ -230,7 +230,7 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 		<dl class="space-y-4">
 			{
 				sectionCertifications.map(({ title, alias, issuer, date, id }) => (
-					<div class="flex flex-col sm:flex-row sm:items-start gap-2">
+					<div class="flex flex-col gap-2 sm:flex-row justify-between">
 						<dt class="flex-grow">
 							<span class="font-semibold">{title}</span>
 							{alias && (
@@ -241,7 +241,7 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 							<span class="block">{issuer}</span>
 							{id && <span class="block text-sm">Certificate ID: {id}</span>}
 						</dt>
-						<dd class="text-center sm:text-right whitespace-nowrap sm:mt-0">{date}</dd>
+						<dd class="text-right whitespace-nowrap">{date}</dd>
 					</div>
 				))
 			}
