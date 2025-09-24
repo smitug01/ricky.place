@@ -52,18 +52,44 @@ const sectionWorking: { company: string; title: string; date: string }[] = [
 	}
 ];
 
-const sectionCertifications: { title: string; issuer: string; date: string; id?: string }[] = [
+const sectionCertifications: { title: string; alias?: string; issuer: string; date: string; id?: string }[] = [
 	{
-		title: "Computer Hardware Fabrication - C Level Technician",
-		issuer: "Ministry of Labor (Taiwan)",
-		date: "July 2023",
-		id: "120-0292806"
+		title: "Cisco Certified Cybersecurity Associate",
+		alias: "Cisco Certified Network CyberOps Associate, CBROPS, Cybersecurity-A",
+		issuer: "Cisco Systems, Inc.",
+		date: "Sep 2025",
+		id: "7bc3032aa6484ce3bbbaf8ba2b48b511"
+	},
+	{
+		title: "Cisco Certified Network Professional Security",
+		alias: "CCNP Security, CCNP-S",
+		issuer: "Cisco Systems, Inc.",
+		date: "Sep 2025",
+		id: "3bddb585815940399267a7d6c6f38402"
+	},
+	{
+		title: "Cisco Certified Specialist - Security Core",
+		issuer: "Cisco Systems, Inc.",
+		date: "Sep 2025",
+		id: "a859c1cd77024a1e901b9b360534cf43"
+	},
+	{
+		title: "Cisco Certified Specialist - Network Security VPN Implementation",
+		issuer: "Cisco Systems, Inc.",
+		date: "Sep 2025",
+		id: "7385934b77e7451ab1bfbc0749b06c3f"
 	},
 	{
 		title: "Information Security Engineer - Associate Level",
 		issuer: "Ministry of Economic Affairs (Taiwan)",
 		date: "July 2024",
 		id: "B-S11-2409-2024"
+	},
+	{
+		title: "Computer Hardware Fabrication - C Level Technician",
+		issuer: "Ministry of Labor (Taiwan)",
+		date: "July 2023",
+		id: "120-0292806"
 	}
 ];
 
@@ -104,7 +130,7 @@ const sectionContest: { [year: string]: { title: string; desc: string; href?: st
 		{
 			title: "資安技能金盾獎 Final, 1st Place",
 			desc: "(海豹海豹我的神, Play with Team)",
-			href: "https://tw.news.yahoo.com/%E8%B3%87%E5%AE%89%E6%8A%80%E8%83%BD%E9%87%91%E7%9B%BE%E7%8D%8E-40%E7%B5%84%E9%9D%92%E5%B9%B4%E5%A5%BD%E6%89%8B%E8%BC%83%E5%8B%81-160000375.html"
+			href: "https://web.archive.org/web/20250924111321/https://tw.news.yahoo.com/%E8%B3%87%E5%AE%89%E6%8A%80%E8%83%BD%E9%87%91%E7%9B%BE%E7%8D%8E-40%E7%B5%84%E9%9D%92%E5%B9%B4%E5%A5%BD%E6%89%8B%E8%BC%83%E5%8B%81-160000375.html"
 		},
 		{
 			title: "教育部智慧鐵人創意競賽 Final, 3rd Place",
@@ -117,19 +143,19 @@ const sectionContest: { [year: string]: { title: string; desc: string; href?: st
 const sectionPresentation: { desc: string; title: string }[] = [
 	{
 		title: "資訊實作與演練 - 斗六高中 (一日資訊體驗營, 教育部資安人才培育計畫)",
-		desc: "Mar, 2024"
+		desc: "Mar 2024"
 	},
 	{
 		title: "資訊安全基礎認識 - 羅東高工 (一日資訊體驗營, 教育部資安人才培育計畫)",
-		desc: "Jun, 2024"
+		desc: "Jun 2024"
 	},
 	{
 		title: "Linux 101+ - 百齡高中 (社團實作, 教育部資安人才培育計畫)",
-		desc: "May, 2025"
+		desc: "May 2025"
 	},
 	{
 		title: "版本管理與部署：從 Git 到 Google Cloud 的完整流程 - SITCON Camp 2025",
-		desc: "Jul, 2025"
+		desc: "Jul2025"
 	}
 ]
 
@@ -203,15 +229,19 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 		<h2 class="title mb-4 text-xl">Certifications</h2>
 		<dl class="space-y-4">
 			{
-				sectionCertifications.map(({ title, issuer, date, id }) => (
-					<div class="flex flex-col sm:flex-row items-center gap-2">
+				sectionCertifications.map(({ title, alias, issuer, date, id }) => (
+					<div class="flex flex-col sm:flex-row sm:items-start gap-2">
 						<dt class="flex-grow">
 							<span class="font-semibold">{title}</span>
-							<br />
-							<span>{issuer}</span>
+							{alias && (
+								<span class="block text-xs text-gray-600 italic">
+									Also known as: {alias}
+								</span>
+							)}
+							<span class="block">{issuer}</span>
 							{id && <span class="block text-sm">Certificate ID: {id}</span>}
 						</dt>
-						<dd class="text-center">{date}</dd>
+						<dd class="text-center sm:text-right whitespace-nowrap sm:mt-0">{date}</dd>
 					</div>
 				))
 			}
@@ -279,7 +309,7 @@ const sectionCommunityConference: { title: string; year: string }[] = [
 		</dl>
 	</section>
 
-	<section aria-label="Blog post list" class="mt-16">
+	<section aria-label="Blog post list" class="mt-16 print:hidden">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4">
 			{
